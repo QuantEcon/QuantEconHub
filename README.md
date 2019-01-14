@@ -27,6 +27,8 @@ By setting the relevant bit of `config.yaml` (see [here](https://zero-to-jupyter
 
 If your Google Cloud Console is set up (i.e., it's within the 1-hour persistence window), then to recompile you will simply need to follow the instructions [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/extending-jupyterhub.html).
 
+The one we've prepared is `quantecon/base` for the image name, and `jupyterhub2` for the tag.
+
 > How do I add users to the whitelist?
 
 Add them to the `whitelist/users` section of the `config.yaml` (i.e., [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html#adding-a-whitelist)), and recompile.
