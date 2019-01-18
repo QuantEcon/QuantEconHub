@@ -1,6 +1,8 @@
 ## Setup Instructions
 
-0. Make sure you have a Google Cloud account (potentially with [free credits](https://cloud.google.com/free/)). An individual account is fine. Once that's done, create a project, and don't set a default compute location for it.
+0. Make sure you have a Google Cloud account (potentially with \$400 in [free credits](https://cloud.google.com/free/)). An individual account is fine. Once that's done, create a project, and don't set a default compute location for it.
+
+:warning: Make sure you're aware of how pricing works before deciding whether you want to do this. I think Google Cloud charges by second (so our setup is \$0.40/hr, without sleep). But the pricing structure is intricate, and this didn't involve academic discounts, so I'm uncertain. 
 
 1. Go to the [Kubernetes Engine API](https://console.cloud.google.com/apis/api/container.googleapis.com/overview) and hit "Enable." This may take a few minutes.
 
@@ -33,7 +35,9 @@ The easiest authentication setup is to use GitHub, with an optional whitelist of
 
 The instructions for GitHub setup are [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html) and the whitelist are [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html#adding-a-whitelist).
 
-Both involve changes to `config.yaml` (an example ex-post is below), and after running the changes you need to recompile by following [these instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/extending-jupyterhub.html). As below, the hub address is just `http://youripaddress` (from step 6) and the callback is just that followed by `/hub/oauth_callback`.
+Both involve changes to `config.yaml` (an example with both the GitHub auth and the whitelist is below), and after running the changes you need to recompile by following [these instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/extending-jupyterhub.html).
+
+When you're setting it up on GitHub, the hub address is just `http://youripaddress` (from step 6) and the callback is just that followed by `/hub/oauth_callback`.
 
 ```
 auth:
@@ -54,22 +58,10 @@ You can open this file by running `nano config.yaml` in the container. Make your
 
 You can do this by setting yourself up in the `config.yaml` to be an [admin user](https://zero-to-jupyterhub.readthedocs.io/en/latest/user-management.html#admin-users). This will let you start/stop students' servers, and access their notebooks.
 
-As always, after changing the `config.yaml` you will need to [apply the changes](https://zero-to-jupyterhub.readthedocs.io/en/latest/extending-jupyterhub.html).
+As above, after changing the `config.yaml` you will need to [apply the changes](https://zero-to-jupyterhub.readthedocs.io/en/latest/extending-jupyterhub.html).
 
 > How do I budget compute for user accounts?
 
 You can do this by editing the `singleuser` part of the `config.yaml` (which we've already created, to tell JupyterHub to start new users with the `quantecon/base`).
 
 See [this page](https://zero-to-jupyterhub.readthedocs.io/en/latest/user-resources.html) for details. At the bottom, there's a command you can run to scale the cluster itself up or down.
-
-> How do I nuke/reset things?
-
-* To shut down the Google Cloud setup, there are instructions for deleting the project [here](https://cloud.google.com/resource-manager/docs/creating-managing-projects). Basically, go to the settings page, select the project, and hit shut down.
-
-* To reset things on your local machine (in a \*nix terminal, like git bash or macOS or Linux), run `docker rm -f $(docker ps -aq)` to get rid of all containers, and `docker rmi -f $(docker images -aq)` to get rid of all images. Alternately, `docker rmi quantecon/google-hub` will delete just the relevant image.
-
-> What is the pricing like?
-
-This [tool](https://cloud.google.com/products/calculator/) from Google allows you to estimate pricing of Kubernetes workloads, but filling it out is nontrivial.  
-
-Google offers some support for soft budgeting, and you can find the instructions [here](https://cloud.google.com/billing/docs/how-to/budgets).
