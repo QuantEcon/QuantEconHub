@@ -27,7 +27,7 @@ It might say `<pending>`, which means that your IP is being assigned. Running th
 
 :warning: Make sure you don't _delete_ (i.e., `docker rm`) the container. If you want to make modifications to the JupyterHub, restart the container by running `docker ps -a`, noting the name of the `quantecon/google-hub` image (e.g., something like `admiring_mirzakhani`), and running `docker start -ai admiring_mirzakhani`).
 
-## Customization and FAQ
+## Customization
 
 > What kind of security options are available?
 
