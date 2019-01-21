@@ -4,7 +4,7 @@
 
 :warning: Make sure you're aware of how pricing works before deciding whether you want to do this. I think Google Cloud charges by second (so our setup is \$0.40/hr, without sleep). But the pricing structure is intricate, and this didn't involve academic discounts, so I'm uncertain. 
 
-1. Go to the [Kubernetes Engine API](https://console.cloud.google.com/apis/api/container.googleapis.com/overview) and hit "Enable." This may take a few minutes.
+1. Go to the [Kubernetes Engine API](https://console.cloud.google.com/apis/api/container.googleapis.com/overview) and hit "Enable." This may take a few minutes. **Note:** You may need to wait a few minutes for Google Cloud to become "aware" of your new project.
 
 2. From your local terminal, pull the Docker image with `docker pull quantecon/google-hub`. If you don't have Docker installed, follow the instructions [here](https://lectures.quantecon.org/jl/tools_editors.html#Docker).
 
