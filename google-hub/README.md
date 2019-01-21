@@ -35,24 +35,37 @@ The easiest authentication setup is to use GitHub, with an optional whitelist of
 
 The instructions for GitHub setup are [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html) and the whitelist are [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html#adding-a-whitelist).
 
-Both involve changes to `config.yaml` (an example with both the GitHub auth and the whitelist is below), and after running the changes you need to recompile by following [these instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/extending-jupyterhub.html).
-
 **Note:** When you're setting it up on GitHub, the hub address is just `http://youripaddress` (from step 6) and the callback is just that followed by `/hub/oauth_callback`.
 
+Both involve changes to `config.yaml`. You can open this file by running `nano config.yaml` in the container. Make your changes, and then hit `Ctrl + X` to exit. It'll ask you to hit `Y` to save.
+
+After running the changes, you will need to "recompile" (apply the changes) by running the following command:
+
 ```
+RELEASE=jhub
+helm upgrade $RELEASE jupyterhub/jupyterhub --version=0.7.0 --values config.yaml
+```
+
+Here is an example of what your `config.yaml` might look like with GitHub authentication and a whitelist. 
+
+```
+proxy:
+  secretToken: "some_secret_string"
+singleuser:
+  image:
+    name: quantecon/base
+    tag: jupyterhub2
 auth:
   type: github
   github:
     clientId: "bcfbff53591612ae69da"
-    clientSecret: "some_secret"
+    clientSecret: "some_secret_string"
     callbackUrl: "http://35.239.254.168/hub/oauth_callback"
   whitelist:
     users:
       - arnavs
       - jlperla
 ```
-
-You can open this file by running `nano config.yaml` in the container. Make your changes, and then hit `Ctrl + X` to exit. It'll ask you to hit `Y` to save.
 
 > How do I give my user account special privileges?
 
