@@ -35,9 +35,9 @@ We have some reports that `docker ps -a` doesn't work on some Windows versions.
 
 The easiest authentication setup is to use GitHub, with an optional whitelist of users (anyone else will get a `403: Forbidden` error if they try to log in).
 
-The instructions for GitHub setup are [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html) and the whitelist are [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html#adding-a-whitelist).
+The instructions for GitHub setup are [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html). For the whitelist, you can just add a list of github user IDs to the `config.yaml` (see below on how to edit it).
 
-**Note:** When you're setting it up on GitHub, the hub address is just `http://youripaddress` (from step 6) and the callback is just that followed by `/hub/oauth_callback`.
+**Note:** When you're setting it up on GitHub, the hub address is just `http://youripaddress` (from step 6) and the callback URL is just that followed by `/hub/oauth_callback`.
 
 Both involve changes to `config.yaml`. You can open this file by running `nano config.yaml` in the container. Make your changes, and then hit `Ctrl + X` to exit. It'll ask you to hit `Y` to save.
 
