@@ -25,7 +25,7 @@ helm upgrade --install $RELEASE jupyterhub/jupyterhub --namespace $NAMESPACE --v
 
 It might say `<pending>`, which means that your IP is being assigned. Running the command again in a few minutes should clear it up.
 
-:warning: Make sure you don't _delete_ (i.e., `docker rm`) the container. If you want to exit the container or quit the terminal window,you can restart it by running `docker ps -a`, noting the name of the `quantecon/google-hub` image (e.g., something like `admiring_mirzakhani`), and running `docker start -ai admiring_mirzakhani`).
+:warning: Make sure you don't close the terminal window until you're done setting up things like authentication. Once you exit the container, you'll lose the secret token necessary to continue working with this instance.
 
 We have some reports that `docker ps -a` doesn't work on some Windows versions.
 
