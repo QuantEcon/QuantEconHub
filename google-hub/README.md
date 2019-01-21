@@ -25,7 +25,7 @@ helm upgrade --install $RELEASE jupyterhub/jupyterhub --namespace $NAMESPACE --v
 
 It might say `<pending>`, which means that your IP is being assigned. Running the command again in a few minutes should clear it up.
 
-:warning: Make sure you don't close the terminal window until you're done setting up things like authentication (see below). Once you exit, you'll lose the ability to manage this setup through Docker (although you can still do so through the Google Cloud Terminal).
+:warning: Make sure you don't close the terminal window/container until you're done setting up things like authentication (see below). You can resurrect the container if you do this by mistake, or if you need to close it, but you need to run a few commands. The details are in the FAQ.
 
 ## Customization
 
