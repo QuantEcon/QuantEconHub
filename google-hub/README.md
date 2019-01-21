@@ -37,7 +37,7 @@ The instructions for GitHub setup are [here](https://zero-to-jupyterhub.readthed
 
 Both involve changes to `config.yaml` (an example with both the GitHub auth and the whitelist is below), and after running the changes you need to recompile by following [these instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/extending-jupyterhub.html).
 
-When you're setting it up on GitHub, the hub address is just `http://youripaddress` (from step 6) and the callback is just that followed by `/hub/oauth_callback`.
+**Note:** When you're setting it up on GitHub, the hub address is just `http://youripaddress` (from step 6) and the callback is just that followed by `/hub/oauth_callback`.
 
 ```
 auth:
