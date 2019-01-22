@@ -15,6 +15,8 @@ CONTAINER ID        IMAGE                  COMMAND             CREATED          
 
 2. Run `docker start -ai silly_lalande` (where you input the name of the container in your case).
 
+:warning: This will stop working if you delete the stopped container (i.e., if you `docker rm` it). If you do that without writing down the secret token from the container's `config.yaml`, then you will need to tear down the entire JupyterHub setup (i.e., shut down the Google Cloud project) and start over if you want to make changes.
+
 > How do I nuke/reset things?
 
 * To shut down the Google Cloud setup, there are instructions for deleting the project [here](https://cloud.google.com/resource-manager/docs/creating-managing-projects). Basically, go to the settings page, select the project, and hit shut down.
